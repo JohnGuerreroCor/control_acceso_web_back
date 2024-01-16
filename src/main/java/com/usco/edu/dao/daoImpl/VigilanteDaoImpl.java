@@ -15,7 +15,7 @@ import com.usco.edu.resultSetExtractor.VigilanteSetExtractor;
 public class VigilanteDaoImpl implements IVigilanteDao {
 	
 	@Autowired
-	@Qualifier("JDBCTemplatePlanesConsulta")
+	@Qualifier("JDBCTemplateConsulta")
 	public JdbcTemplate jdbcTemplate;
 
 	@Override

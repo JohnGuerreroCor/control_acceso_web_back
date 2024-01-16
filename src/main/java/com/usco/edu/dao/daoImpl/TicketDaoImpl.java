@@ -16,7 +16,7 @@ import com.usco.edu.resultSetExtractor.TicketSetExtractor;
 public class TicketDaoImpl implements ITicketDao {
 	
 	@Autowired
-	@Qualifier("JDBCTemplatePlanesConsulta")
+	@Qualifier("JDBCTemplateConsulta")
 	public JdbcTemplate jdbcTemplate;
 	
 	@Autowired

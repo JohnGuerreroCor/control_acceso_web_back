@@ -17,7 +17,7 @@ import com.usco.edu.resultSetExtractor.TokenInternoSetExtractor;
 public class TokenInternoDaoImpl implements ITokenInternoDao {
 	
 	@Autowired
-	@Qualifier("JDBCTemplatePlanesConsulta")
+	@Qualifier("JDBCTemplateConsulta")
 	public JdbcTemplate jdbcTemplate;
 	
 	@Autowired

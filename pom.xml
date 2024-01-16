@@ -10,10 +10,10 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>usco.edu.co</groupId>
-	<artifactId>puesto-vigilancia</artifactId>
+	<artifactId>control-acceso-web</artifactId>
 	<version>1.0</version>
 	<packaging>war</packaging>
-	<name>puesto-vigilancia</name>
+	<name>control-acceso-web</name>
 	<description>Sistema que permite controlar los puestos de acceso a la institucion</description>
 
 	<properties>

@@ -16,7 +16,7 @@ import com.usco.edu.resultSetExtractor.ControlAccesoSetExtractor;
 public class ControlAccesoDaoImpl implements IControlAccesoDao {
 	
 	@Autowired
-	@Qualifier("JDBCTemplatePlanesConsulta")
+	@Qualifier("JDBCTemplateConsulta")
 	public JdbcTemplate jdbcTemplate;
 	
 	@Autowired
