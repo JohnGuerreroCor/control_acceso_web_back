@@ -12,12 +12,11 @@ import com.usco.edu.entities.Estudiante;
 import com.usco.edu.resultSetExtractor.EstudianteSetExtractor;
 
 @Repository
-public class EstudianteDaoImpl implements IEstudianteDao{
-	
+public class EstudianteDaoImpl implements IEstudianteDao {
+
 	@Autowired
 	@Qualifier("JDBCTemplateConsulta")
 	public JdbcTemplate jdbcTemplate;
-	
 
 	@Override
 	public List<Estudiante> findByCodigo(String codigo) {
@@ -29,8 +28,7 @@ public class EstudianteDaoImpl implements IEstudianteDao{
 				+ "inner join tipo_id ti on p.tii_codigo = ti.tii_codigo "
 				+ "inner join programa pr on e.pro_codigo = pr.pro_codigo "
 				+ "inner join uaa u on pr.uaa_codigo = u.uaa_codigo "
-				+ "inner join sede s on pr.sed_codigo = s.sed_codigo "
-				+ "where ucd.us = 'u" + codigo + "'";
+				+ "inner join sede s on pr.sed_codigo = s.sed_codigo " + "where ucd.us = 'u" + codigo + "'";
 		return jdbcTemplate.query(sql, new EstudianteSetExtractor());
 	}
 

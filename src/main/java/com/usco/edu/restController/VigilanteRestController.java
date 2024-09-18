@@ -14,43 +14,43 @@ import com.usco.edu.service.IVigilanteService;
 @RestController
 @RequestMapping(path = "vigilante")
 public class VigilanteRestController {
-	
+
 	@Autowired
 	IVigilanteService vigilanteService;
-	
+
 	@GetMapping(path = "obtener-vigilantes")
 	public List<Vigilante> obtenerVigilantes() {
-		
+
 		return vigilanteService.obtenerVigilantes();
-		
+
 	}
-	
+
 	@GetMapping(path = "obtener-vigilantes-activos")
 	public List<Vigilante> obtenerVigilantesActivos() {
-		
+
 		return vigilanteService.obtenerVigilantesActivos();
-		
+
 	}
-	
+
 	@GetMapping(path = "obtener-vigilantes-sin-asignacion")
 	public List<Vigilante> obtenerVigilantesSinAsignacion() {
-		
+
 		return vigilanteService.obtenerVigilantesSinAsignacion();
-		
+
 	}
-	
+
 	@GetMapping(path = "obtener-vigilantes-identificacion/{id}")
 	public List<Vigilante> obtenerVigilanteIdentificacion(@PathVariable String id) {
-		
+
 		return vigilanteService.obtenerVigilanteIdentificacion(id);
-		
+
 	}
-	
+
 	@GetMapping(path = "obtener-vigilante-codigo/{codigo}/{username}")
 	public List<Vigilante> obtenerVigilanteCodigo(@PathVariable int codigo) {
-		
+
 		return vigilanteService.obtenerVigilanteCodigo(codigo);
-		
+
 	}
 
 }

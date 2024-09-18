@@ -15,7 +15,6 @@ import com.usco.edu.resultSetExtractor.CarnetDigitalSetExtractor;
 
 @Repository
 public class EstamentoDaoImpl implements IEstamentoDao {
-	
 
 	@Autowired
 	@Qualifier("JDBCTemplateConsulta")
@@ -31,22 +30,22 @@ public class EstamentoDaoImpl implements IEstamentoDao {
 
 	@Override
 	public List<Estamento> carnets(int percodigo) {
-		
+
 		String sql = "select ut.tus_codigo, ut.tus_nombre from dbo.usuario_carnet_digital ucd "
-				+ "inner join usuario_tipo ut on ucd.istipo = ut.tus_codigo "
-				+ "where ucd.up = " + percodigo + " group by ut.tus_codigo, ut.tus_nombre ";
+				+ "inner join usuario_tipo ut on ucd.istipo = ut.tus_codigo " + "where ucd.up = " + percodigo
+				+ " group by ut.tus_codigo, ut.tus_nombre ";
 		return jdbcTemplate.query(sql, new EstamentoSetExtractor());
-		
+
 	}
 
 	@Override
 	public List<CarnetDigital> carnetEstamento(int percodigo) {
-		
+
 		String sql = "select ut.tus_codigo, ut.tus_nombre, ucd.usg_uaa, ucd.us  from dbo.usuario_carnet_digital ucd "
-				+ "inner join usuario_tipo ut on ucd.istipo = ut.tus_codigo "
-				+ "where ucd.up = " + percodigo + " group by ut.tus_codigo, ut.tus_nombre, ucd.usg_uaa, ucd.us";
+				+ "inner join usuario_tipo ut on ucd.istipo = ut.tus_codigo " + "where ucd.up = " + percodigo
+				+ " group by ut.tus_codigo, ut.tus_nombre, ucd.usg_uaa, ucd.us";
 		return jdbcTemplate.query(sql, new CarnetDigitalSetExtractor());
-		
+
 	}
 
 }

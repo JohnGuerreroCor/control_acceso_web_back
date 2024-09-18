@@ -10,8 +10,8 @@ import com.usco.edu.entities.Usuario;
 import com.usco.edu.rowMapper.UsuarioRowMapper;
 
 @Repository
-public class UsuarioDaoImpl implements IUsuarioDao{
-	
+public class UsuarioDaoImpl implements IUsuarioDao {
+
 	@Autowired
 	@Qualifier("JDBCTemplateLogin")
 	public JdbcTemplate jdbcTemplate;
@@ -28,7 +28,7 @@ public class UsuarioDaoImpl implements IUsuarioDao{
 		int result = 0;
 		String sql = "select count(v.vig_codigo) from carnetizacion.vigilantes v "
 				+ "where v.vig_estado = 1 and v.puv_estado = 1 and v.vig_identificacion = ?";
-		result =  jdbcTemplate.queryForObject(sql, new Object[] { username }, Integer.class);
+		result = jdbcTemplate.queryForObject(sql, new Object[] { username }, Integer.class);
 		return result > 0 ? true : false;
 	}
 

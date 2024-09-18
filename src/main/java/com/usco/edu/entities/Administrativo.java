@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class Administrativo implements Serializable {
-	
+
 	private int codigo;
 	private String identificacion;
 	private int codigoPersona;
@@ -20,7 +20,7 @@ public class Administrativo implements Serializable {
 	private Date vinculacionFechaFin;
 	private int uaaDependencia;
 	private String nombrePrograma;
-	
+
 	private static final long serialVersionUID = 1L;
 
 }

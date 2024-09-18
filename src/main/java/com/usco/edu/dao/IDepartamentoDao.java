@@ -6,7 +6,10 @@ import com.usco.edu.entities.Departamento;
 import com.usco.edu.entities.Municipio;
 
 public interface IDepartamentoDao {
+
 	public List<Departamento> departamentos(String userdb);
+
 	public List<Municipio> municipiosbydep(String userdb);
+
 	public List<Municipio> municipiosbydepartamento(int codigo, String userdb);
 }

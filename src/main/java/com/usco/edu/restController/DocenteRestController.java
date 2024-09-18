@@ -1,4 +1,5 @@
 package com.usco.edu.restController;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +14,10 @@ import com.usco.edu.service.IDocenteService;
 @RestController
 @RequestMapping(path = "docente")
 public class DocenteRestController {
-	
+
 	@Autowired
 	IDocenteService docenteService;
-	
+
 	@GetMapping(path = "docente-get/{id}/{username}")
 	public List<Docente> findByIdentificacion(@PathVariable String id, @PathVariable String username) {
 		return docenteService.findByIdentificacion(id, username);

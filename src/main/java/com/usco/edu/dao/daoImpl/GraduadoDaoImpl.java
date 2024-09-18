@@ -12,12 +12,11 @@ import com.usco.edu.entities.Graduado;
 import com.usco.edu.resultSetExtractor.GraduadoSetExtractor;
 
 @Repository
-public class GraduadoDaoImpl implements IGraduadoDao{
-	
+public class GraduadoDaoImpl implements IGraduadoDao {
+
 	@Autowired
 	@Qualifier("JDBCTemplateConsulta")
 	public JdbcTemplate jdbcTemplate;
-	
 
 	@Override
 	public List<Graduado> buscarPorCodigo(String codigo, String userdb) {
@@ -29,8 +28,8 @@ public class GraduadoDaoImpl implements IGraduadoDao{
 				+ "inner join tipo_id ti on p.tii_codigo = ti.tii_codigo "
 				+ "inner join programa pr on e.pro_codigo = pr.pro_codigo "
 				+ "inner join uaa u on pr.uaa_codigo = u.uaa_codigo "
-				+ "inner join sede s on pr.sed_codigo = s.sed_codigo "
-				+ "where p.per_identificacion  = '" + codigo + "' order by g.gra_codigo desc";
+				+ "inner join sede s on pr.sed_codigo = s.sed_codigo " + "where p.per_identificacion  = '" + codigo
+				+ "' order by g.gra_codigo desc";
 		return jdbcTemplate.query(sql, new GraduadoSetExtractor());
 	}
 

@@ -8,7 +8,7 @@ import org.springframework.jdbc.core.RowMapper;
 import com.usco.edu.entities.Administrativo;
 
 public class AdministrativoRowMapper implements RowMapper<Administrativo> {
-	
+
 	@Override
 	public Administrativo mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Administrativo administrativo = new Administrativo();

@@ -18,7 +18,5 @@ public interface ITicketService {
 	int registrar(Ticket ticket);
 	
 	Respuesta enviarTicketVisitanteEmail(String email, String nombre, String id, String lugar, String registro, String vigencia, String qr);
-	
-	Respuesta enviarTicketInvitadoEmail(String email, String foto, String nombre, String id, String lugar, String registro, String vigencia, String qr);
 
 }

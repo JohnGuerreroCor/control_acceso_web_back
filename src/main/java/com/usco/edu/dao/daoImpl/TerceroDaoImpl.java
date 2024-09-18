@@ -14,16 +14,14 @@ import com.usco.edu.resultSetExtractor.TerceroSetExtractor;
 
 @Repository
 public class TerceroDaoImpl implements ITerceroDao {
-	
-	
+
 	@Autowired
 	@Qualifier("JDBCTemplateConsulta")
 	public JdbcTemplate jdbcTemplate;
-	
+
 	@Autowired
 	@Qualifier("JDBCTemplateEjecucion")
 	public JdbcTemplate jdbcTemplateEjecucion;
-	
 
 	@Override
 	public List<Tercero> obtenerTerceroId(String id) {
@@ -32,31 +30,22 @@ public class TerceroDaoImpl implements ITerceroDao {
 		return jdbcTemplate.query(sql, new TerceroSetExtractor());
 	}
 
-
 	@Override
 	public int registrar(Tercero tercero) {
-		
+
 		String sql = "INSERT INTO dbo.tercero "
 				+ "(tii_codigo, ter_identificacion, ter_nombre, ter_email, ter_apellido1, ter_apellido2, ter_nombre1, ter_nombre2, ter_borrado, ter_fecha) "
 				+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
-		
-		int result = jdbcTemplateEjecucion.update(sql, new Object[] {
-				tercero.getTipoDocumento(),
-				tercero.getIdentificacion(),
-				tercero.getNombreCompleto(),
-				tercero.getEmail(),
-				tercero.getApellido1(),
-				tercero.getApellido2(),
-				tercero.getNombre1(),
-				tercero.getNombre2(),
-				tercero.getEstado(), 
-				tercero.getFechaRegistro()
-				});
-		
+
+		int result = jdbcTemplateEjecucion.update(sql,
+				new Object[] { tercero.getTipoDocumento(), tercero.getIdentificacion(), tercero.getNombreCompleto(),
+						tercero.getEmail(), tercero.getApellido1(), tercero.getApellido2(), tercero.getNombre1(),
+						tercero.getNombre2(), tercero.getEstado(), tercero.getFechaRegistro() });
+
 		try {
 
 			MapSqlParameterSource parameter = new MapSqlParameterSource();
-			
+
 			parameter.addValue("tipoDocumento", tercero.getTipoDocumento());
 			parameter.addValue("identificacion", tercero.getIdentificacion());
 			parameter.addValue("nombreCompleto", tercero.getNombreCompleto());
@@ -67,26 +56,24 @@ public class TerceroDaoImpl implements ITerceroDao {
 			parameter.addValue("nombre2", tercero.getNombre2());
 			parameter.addValue("estado", tercero.getEstado());
 			parameter.addValue("fechaRegistro", tercero.getFechaRegistro());
-			
+
 			return result;
 
 		} catch (Exception e) {
 
 			e.printStackTrace();
 			return 0;
-			
+
 		}
-		
+
 	}
-	
+
 	@Override
 	public int actualizar(Tercero tercero) {
 
-		String sql = "UPDATE dbo.tercero "
-				+ "SET ter_email = ? "
-				+ "WHERE ter_codigo = ?;";
+		String sql = "UPDATE dbo.tercero " + "SET ter_email = ? " + "WHERE ter_codigo = ?;";
 
-		int result = jdbcTemplateEjecucion.update(sql, new Object[] {tercero.getEmail(), tercero.getCodigo()});
+		int result = jdbcTemplateEjecucion.update(sql, new Object[] { tercero.getEmail(), tercero.getCodigo() });
 
 		try {
 
@@ -95,13 +82,13 @@ public class TerceroDaoImpl implements ITerceroDao {
 			parameter.addValue("codigo", tercero.getCodigo());
 
 			return result;
-			
+
 		} catch (Exception e) {
 
 			e.printStackTrace();
 			return 0;
 		}
-		
+
 	}
 
 }

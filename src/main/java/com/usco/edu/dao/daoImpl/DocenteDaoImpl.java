@@ -13,11 +13,10 @@ import com.usco.edu.resultSetExtractor.DocenteSetExtractor;
 
 @Repository
 public class DocenteDaoImpl implements IDocenteDao {
-	
+
 	@Autowired
 	@Qualifier("JDBCTemplateConsulta")
 	public JdbcTemplate jdbcTemplate;
-	
 
 	@Override
 	public List<Docente> findByIdentificacion(String id, String userdb) {
@@ -27,9 +26,11 @@ public class DocenteDaoImpl implements IDocenteDao {
 				+ "inner join grupo_sanguineo gs on p.grs_codigo = gs.grs_codigo "
 				+ "inner join tipo_id ti on p.tii_codigo = ti.tii_codigo "
 				+ "inner join uaa u on dv.uaa_codigo = u.uaa_codigo "
-				+ "inner join sede s on u.sed_codigo = s.sed_codigo "
-				+ "where dv.per_identificacion  = '" + id + "' order by dv.uap_codigo asc";
+				+ "inner join sede s on u.sed_codigo = s.sed_codigo " + "where dv.per_identificacion  = '" + id
+				+ "' order by dv.uap_codigo asc";
+		
 		return jdbcTemplate.query(sql, new DocenteSetExtractor());
+		
 	}
 
 }
